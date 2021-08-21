@@ -18,6 +18,7 @@ class Splatoon2(commands.Cog):
         jsonData = response.json()
 
         await ctx.send(jsonData["result"][0]["rule"])
+        await ctx.send(jsonData["result"][0]["maps_ex"][1])
 
 def setup(bot):
     bot.add_cog(Splatoon2(bot))
