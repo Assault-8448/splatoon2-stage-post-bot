@@ -32,13 +32,12 @@ class Splatoon2(commands.Cog):
         regular_nextmap1 = jsonData["result"][0]["maps"][1]
 
         regular_embed = discord.Embed(
-                                    title = "現在と次のレギュラーマッチ ステージローテーション",
+                                    title = "レギュラーマッチ（ナワバリバトル）",
                                     color=0x00ff00,
-                                    description=f"{dt.strftime('%Y年%m月%d日 %H:%M:%S')}時点でのステージと次のステージ")
-        regular_embed.add_field(name=f"現在は**{regular_map0}**", value=f"次は「**{regular_nextmap0}**」")
-        regular_embed.add_field(name=f"現在は**{regular_map1}**", value=f"次は「**{regular_nextmap1}**」")
+                                    description=f"{dt.strftime('%Y年%m月%d日 %H:%M:%S')}時点と次のステージ情報")
+        regular_embed.add_field(name=f"いま: **{regular_map0}** / **{regular_map1}**", value=f"つぎ: **{regular_nextmap0}** / **{regular_nextmap1}**", inline=False)
         regular_embed.set_thumbnail(url="https://cdn.wikimg.net/en/splatoonwiki/images/4/4c/Mode_Icon_Regular_Battle_2.png")
-        regular_embed.set_footer(text="APIは https://spla2.yuu26.com を利用しています。")
+        regular_embed.set_footer(text="API: https://spla2.yuu26.com")
 
         await ctx.send(embed=regular_embed)
 
@@ -46,8 +45,10 @@ class Splatoon2(commands.Cog):
     async def ranked(self, ctx):
 
         url = "https://spla2.yuu26.com/gachi/now"
-        ua = "Splatoon2MapPostBot_ranked/WIP (twitter @SzlyNe_, Discord Assault#6639"
+        url_2 = "https://spla2.yuu26.com/gachi/next"
+        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#6639"
         headers = {"User-Agent": ua}
+
         response = requests.get(url)
         jsonData = response.json()
 
@@ -55,7 +56,56 @@ class Splatoon2(commands.Cog):
         ranked_map0 = jsonData["result"][0]["maps"][0]
         ranked_map1 = jsonData["result"][0]["maps"][1]
 
-        await ctx.send(f"現在のルール: {ranked_mode} / 現在のマップ: {ranked_map0}, {ranked_map1}")
+        response = requests.get(url_2)
+        jsonData = response.json()
+
+        ranked_nextmode = jsonData["result"][0]["rule"]
+        ranked_nextmap0 = jsonData["result"][0]["maps"][0]
+        ranked_nextmap1 = jsonData["result"][0]["maps"][1]
+
+        ranked_embed = discord.Embed(
+                                    title = "ガチマッチ",
+                                    color=0xff0000,
+                                    description=f"{dt.strftime('%Y年%m月%d日 %H:%M:%S')}時点と次のモードとステージ情報")
+        ranked_embed.add_field(name=f"いま: **{ranked_mode}**", value=f"つぎ: **{ranked_nextmode}**", inline=False)
+        ranked_embed.add_field(name=f"いま: **{ranked_map0}** / **{ranked_map1}**", value=f"つぎ: **{ranked_nextmap0}** / **{ranked_nextmap1}**", inline=False)
+        ranked_embed.set_thumbnail(url="https://cdn.wikimg.net/en/splatoonwiki/images/2/2c/Mode_Icon_Ranked_Battle_2.png")
+        ranked_embed.set_footer(text="API: https://spla2.yuu26.com")
+
+        await ctx.send(embed=ranked_embed)
+
+    @commands.command()
+    async def league(self, ctx):
+
+        url = "https://spla2.yuu26.com/league/now"
+        url_2 = "https://spla2.yuu26.com/league/next"
+        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#6639"
+        headers = {"User-Agent": ua}
+
+        response = requests.get(url)
+        jsonData = response.json()
+
+        league_mode = jsonData["result"][0]["rule"]
+        league_map0 = jsonData["result"][0]["maps"][0]
+        league_map1 = jsonData["result"][0]["maps"][1]
+
+        response = requests.get(url_2)
+        jsonData = response.json()
+
+        league_nextmode = jsonData["result"][0]["rule"]
+        league_nextmap0 = jsonData["result"][0]["maps"][0]
+        league_nextmap1 = jsonData["result"][0]["maps"][1]
+
+        league_embed = discord.Embed(
+                                    title = "リーグマッチ",
+                                    color=0xffc0cb,
+                                    description=f"{dt.strftime('%Y年%m月%d日 %H:%M:%S')}時点と次のモードとステージ情報")
+        league_embed.add_field(name=f"いま: **{league_mode}**", value=f"つぎ: **{league_nextmode}**", inline=False)
+        league_embed.add_field(name=f"いま: **{league_map0}** / **{league_map1}**", value=f"つぎ: **{league_nextmap0}** / **{league_nextmap1}**", inline=False)
+        league_embed.set_thumbnail(url="https://cdn.wikimg.net/en/splatoonwiki/images/9/9b/Symbol_LeagueF.png")
+        league_embed.set_footer(text="API: https://spla2.yuu26.com")
+
+        await ctx.send(embed=league_embed)
 
 def setup(bot):
     bot.add_cog(Splatoon2(bot))
