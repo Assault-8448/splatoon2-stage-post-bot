@@ -13,17 +13,8 @@
 
 ```bash
 git clone git@github.com:Assault-8448/splatoon2-stage-post-bot.git
-```
-
-した後に、
-
-```bash
+cd splatoon2-stage-post-bot
 pip install requirements.txt
-```
-
-で必要なライブラリが勝手にインストールされるので、インストール完了後
-
-```bash
 python app.py
 ```
 
