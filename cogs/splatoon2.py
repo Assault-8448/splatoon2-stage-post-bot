@@ -131,10 +131,16 @@ class Splatoon2(commands.Cog):
 
         salmon_logo  = jsonData["result"][0]["stage"]["image"]
 
+        salmon_time_epoch = jsonData["result"][0]["end_t"]
+        salmon_time = datetime.datetime.fromtimestamp(salmon_time_epoch)
+
+        salmon_nextTime_epoch = jsonData["result"][1]["start_t"]
+        salmon_nextTime = datetime.datetime.fromtimestamp(salmon_nextTime_epoch)
+
         salmon_embed = discord.Embed(
                                     title = "サーモンラン",
                                     color = 0xff7f50,
-                                    description=f"{dt.strftime('%Y年%m月%d日 %H:%M:%S')}時点のブキとステージ情報")
+                                    description=f"{dt.strftime('%Y年%m月%d日 %H:%M:%S')}時点のブキとステージ情報\n\nいまのは**{salmon_time.strftime('%Y年%m月%d日 %H:%M:%S')}**まで継続\nつぎのは**{salmon_nextTime.strftime('%Y年%m月%d日 %H:%M:%S')}**にて開始")
         salmon_embed.add_field(name=f"ブキ: {salmon_wpn_1}, {salmon_wpn_2}, {salmon_wpn_3}, {salmon_wpn_4}",
                                value=f"ステージ: **{salmon_map}**",
                                inline=False)
