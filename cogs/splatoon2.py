@@ -123,19 +123,28 @@ class Splatoon2(commands.Cog):
         response = requests.get(url)
         jsonData = response.json()
 
-        salmon_map = jsonData["result"][0]["stage"]["name"]
+        # 現在のサーモンランのデータを取得
+
+        salmon_map   = jsonData["result"][0]["stage"]["name"]
         salmon_wpn_1 = jsonData["result"][0]["weapons"][0]["name"]
         salmon_wpn_2 = jsonData["result"][0]["weapons"][1]["name"]
         salmon_wpn_3 = jsonData["result"][0]["weapons"][2]["name"]
         salmon_wpn_4 = jsonData["result"][0]["weapons"][3]["name"]
-
         salmon_logo  = jsonData["result"][0]["stage"]["image"]
 
-        salmon_time_epoch = jsonData["result"][0]["end_t"]
-        salmon_time = datetime.datetime.fromtimestamp(salmon_time_epoch)
+        salmon_time_epoch = jsonData["result"][0]["end_t"]  # 今のサーモンランが終了する時間を取得
+        salmon_time = datetime.datetime.fromtimestamp(salmon_time_epoch)  # Unix時間からJSTに変換
 
-        salmon_nextTime_epoch = jsonData["result"][1]["start_t"]
-        salmon_nextTime = datetime.datetime.fromtimestamp(salmon_nextTime_epoch)
+        # 次のサーモンランのデータを取得
+
+        salmon_nextMap   = jsonData["result"][1]["stage"]["name"]
+        salmon_nextWpn_1 = jsonData["result"][1]["weapons"][0]["name"]
+        salmon_nextWpn_2 = jsonData["result"][1]["weapons"][1]["name"]
+        salmon_nextWpn_3 = jsonData["result"][1]["weapons"][2]["name"]
+        salmon_nextWpn_4 = jsonData["result"][1]["weapons"][3]["name"]
+
+        salmon_nextTime_epoch = jsonData["result"][1]["start_t"]  # 次のサーモンランが始まる時間を取得
+        salmon_nextTime = datetime.datetime.fromtimestamp(salmon_nextTime_epoch)  # Unix時間からJSTに変換
 
         salmon_embed = discord.Embed(
                                     title = "サーモンラン",
@@ -143,6 +152,9 @@ class Splatoon2(commands.Cog):
                                     description=f"{dt.strftime('%Y年%m月%d日 %H:%M:%S')}時点のブキとステージ情報\n\nいまのは**{salmon_time.strftime('%Y年%m月%d日 %H:%M:%S')}**まで継続\nつぎのは**{salmon_nextTime.strftime('%Y年%m月%d日 %H:%M:%S')}**にて開始")
         salmon_embed.add_field(name=f"ブキ: {salmon_wpn_1}, {salmon_wpn_2}, {salmon_wpn_3}, {salmon_wpn_4}",
                                value=f"ステージ: **{salmon_map}**",
+                               inline=False)
+        salmon_embed.add_field(name=f"次のブキ: {salmon_nextWpn_1}, {salmon_nextWpn_2}, {salmon_nextWpn_3}, {salmon_nextWpn_4}",
+                               value=f"ステージ: **{salmon_nextMap}**",
                                inline=False)
         salmon_embed.set_thumbnail(url=f"{salmon_logo}")
         salmon_embed.set_footer(text="API: https://spla2.yuu26.com")
