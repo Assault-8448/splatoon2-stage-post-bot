@@ -1,7 +1,6 @@
 import asyncio
 import traceback
 import os
-import yaml
 import discord
 import discord.ext.commands as cmd
 from os import getenv
