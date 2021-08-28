@@ -29,7 +29,7 @@ class Bot(cmd.Bot):
         await self.change_presence(status=discord.Status.online, activity=game)
 
 def main():
-    token = getenv('discord_bot_token')
+    token = getenv('DISCORD_BOT_TOKEN')
 
     bot = Bot(prefix=f';')
     bot.run(token)
