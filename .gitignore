@@ -105,3 +105,4 @@ venv.bak/
 
 # bot files
 token.yml
+start.sh
