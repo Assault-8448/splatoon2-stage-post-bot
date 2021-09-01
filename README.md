@@ -14,7 +14,7 @@
 ```bash
 git clone git@github.com:Assault-8448/splatoon2-stage-post-bot.git
 cd splatoon2-stage-post-bot
-pip install requirements.txt
+pip install -r requirements.txt
 python app.py
 ```
 
@@ -26,4 +26,10 @@ python app.py
 
 バグを発見した際はDiscordアカウント「Assault#6639」までDMお願いします。  
 あるいはIssue建てたりPull Requestしてください。
+
+## 開発環境
+
+- Windows 10 Home 64bit 21H1 19043.1165
+- ArchWSL (5.4.72-microsoft-standard-WSL2)
+- Python 3.9.6, discord.py 1.7.3
 
