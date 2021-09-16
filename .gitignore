@@ -104,5 +104,6 @@ venv.bak/
 .mypy_cache/
 
 # bot files
+app.py
 token.yml
 start.sh
