@@ -30,7 +30,7 @@ class Bot(cmd.Bot):
 
 def main():
         bot = Bot(prefix=f';')
-        bot.run(token)
+        bot.run("ODc1NjM4MDM5NDEyNjA0OTU5.YRYbeQ.zA6Y6FmoDg3yEc5r1s8IOn0jUi8")
 
 if __name__ == "__main__":
     main()
