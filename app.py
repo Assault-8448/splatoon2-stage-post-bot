@@ -8,7 +8,8 @@ import discord.ext.commands as cmd
 
 COGS = [
     "cogs.general",
-    "cogs.splatoon2"
+    "cogs.splatoon2",
+    "cogs.pass"
 ]
 
 class Bot(cmd.Bot):
