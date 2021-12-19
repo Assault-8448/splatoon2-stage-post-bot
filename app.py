@@ -50,6 +50,7 @@ def main():
             token_key = data['using']
             token = data[token_key]
 
+        bot = Bot(prefix=f";"   # Prefix定義
         bot.run(token)
 
 if __name__ == "__main__":
