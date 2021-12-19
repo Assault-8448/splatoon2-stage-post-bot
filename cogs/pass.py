@@ -11,7 +11,7 @@ class Pass(commands.Cog):
     @commands.command()
     async def genpass(self, ctx, arg: int) -> int:
         size = arg
-        chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + "!#$%&()=~|`{+*}<>?_,./;:]@[-^"
+        chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + "!#$%&()=~|{+}<>?,./;:]@[-^"
 
         generatedPass = "".join(secrets.choice(chars) for x in range(size))
     
