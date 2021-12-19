@@ -15,10 +15,9 @@ class General(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def bpm(ctx, arg):
-        print(arg)
-        # bpm_calc = 24 * arg / 60
-        # await ctx.send(bpm_calc)
+    async def bpm(self, ctx, arg: int) -> int:
+        bpm_calc = 24 * arg / 60
+        await ctx.send(bpm_calc)
 
 def setup(bot):
     bot.add_cog(General(bot))
