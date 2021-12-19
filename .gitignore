@@ -105,5 +105,5 @@ venv.bak/
 
 # bot files
 app.py
-./token.yml
+*.yml
 start.sh
