@@ -12,18 +12,6 @@ class Splatoon2(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def test(self, ctx):
-
-        url = "https://spla2.yuu26.com/schedule"
-        url_2 = "https://spla2.yuu26.com/regular/next"
-        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#6639"
-
-        response = requests.get(url)
-        jsonData = response.json()
-
-        print(["result"][0][0])
-
-    @commands.command()
     async def regular(self, ctx):
 
         url = "https://spla2.yuu26.com/regular/now"
