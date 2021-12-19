@@ -28,9 +28,29 @@ class Bot(cmd.Bot):
         game = discord.Game(";help")
         await self.change_presence(status=discord.Status.online, activity=game)
 
+default_token_data = {
+        "using": "main",
+        "main": "<your bot token here>"
+        }
+
 def main():
-        bot = Bot(prefix=f';')
-        bot.run("ODc1NjM4MDM5NDEyNjA0OTU5.YRYbeQ.zA6Y6FmoDg3yEc5r1s8IOn0jUi8")
+    if not os.path.exists("token.yml"):
+        with open("token.yml", "w") as f:
+            yaml.dump(default_token_data, f)
+            print(
+                    """
+                    edit token.yml to add your bot token.
+                    in default, it will selected 'main'.
+                    """
+                    )
+            exit()
+    else:
+        with open("token.yml", "r") as f:
+            data = yaml.safe_load(f)
+            token_key = data['using']
+            token = data[token_key]
+
+        bot.run(token)
 
 if __name__ == "__main__":
     main()
