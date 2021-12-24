@@ -1,12 +1,13 @@
-import discord.ext.commands as commands
+from discord.ext import commands
 import discord
 
 class General(commands.Cog):
-    def __init__(self, bot):
+    __slots__ = "bot"
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @commands.command()
-    async def guide(self, ctx):
+    async def guide(self, ctx: commands.Context):
         embed = discord.Embed(title="つかいかた",
                               description="``;map``コマンドを叩くだけで全部出てきます。",
                               color=0x333333)
@@ -15,9 +16,13 @@ class General(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def bpm(self, ctx, arg: int) -> int:
-        bpm_calc = 24 * arg / 60
-        await ctx.send(bpm_calc)
+    async def bpm(self, ctx: commands.Context, *arg: int) -> None:
+        if len(arg) == 0:
+            await ctx.send('BPMを指定してください')
+            return
+        else:
+            bpm_calc = 24 * arg / 60
+            await ctx.send(bpm_calc)
 
 def setup(bot):
     bot.add_cog(General(bot))
