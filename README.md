@@ -1,3 +1,7 @@
+# 飽きたので開発止まってます
+
+そのうちどうにかします。
+
 # 自分用のアレ
 
 自分用で開発しています。  
@@ -29,7 +33,7 @@ python app.py
 
 ## 開発環境
 
-- Windows 11 Home 64bit Insider Preview 10.0.22518.1012
-- ArchWSL (5.10.74.3-microsoft-standard-WSL2)
+- Windows 10 Home 64bit Insider Preview 10.0.19044.1586
+- Alter Linux 5.17.1-zen1-1-zen
 - Python 3.7.3, discord.py 1.7.3
 
