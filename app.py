@@ -14,7 +14,7 @@ COGS = [
 
 class Bot(cmd.Bot):
     def __init__(self, prefix):
-        super().__init__(command_prefix=prefix)
+        super().__init__(command_prefix=prefix, help_command=None)
 
         for cog in COGS:
             try:

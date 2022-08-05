@@ -6,9 +6,9 @@ class General(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def guide(self, ctx):
+    async def help(self, ctx):
         embed = discord.Embed(title="つかいかた",
-                              description="``;map``コマンドを叩くだけで全部出てきます。",
+                description="``;regular``: レギュラーマッチのマップ表示\n``;ranked``: ガチマッチのルール, マップ表示\n``;league``: リーグマッチのルール, マップ表示\n``;salmon``: サーモンランのルール, マップ表示",
                               color=0x333333)
         embed.set_footer(text="APIは毎度叩いているので連投はお控え下さい")
 
