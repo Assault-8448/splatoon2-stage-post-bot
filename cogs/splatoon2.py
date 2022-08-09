@@ -16,7 +16,7 @@ class Splatoon2(commands.Cog):
 
         url = "https://spla2.yuu26.com/regular/now"
         url_2 = "https://spla2.yuu26.com/regular/next"
-        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#6639"
+        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#1892"
         headers = {"User-Agent": ua}
 
         response = requests.get(url)
@@ -48,7 +48,7 @@ class Splatoon2(commands.Cog):
 
         url = "https://spla2.yuu26.com/gachi/now"
         url_2 = "https://spla2.yuu26.com/gachi/next"
-        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#6639"
+        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#1138"
         headers = {"User-Agent": ua}
 
         response = requests.get(url)
@@ -83,7 +83,7 @@ class Splatoon2(commands.Cog):
 
         url = "https://spla2.yuu26.com/league/now"
         url_2 = "https://spla2.yuu26.com/league/next"
-        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#6639"
+        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#1138"
         headers = {"User-Agent": ua}
 
         response = requests.get(url)
@@ -117,7 +117,7 @@ class Splatoon2(commands.Cog):
     async def salmon(self, ctx):
 
         url = "https://spla2.yuu26.com/coop/schedule"
-        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#6639"
+        ua = "Splatoon2MapPostBot_regular/WIP (twitter @SzlyNe_, Discord Assault#1138"
         headers = {"User-Agent": ua}
 
         response = requests.get(url)
